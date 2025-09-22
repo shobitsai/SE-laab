@@ -1,1 +1,39 @@
 
+version: '3.8'
+
+services:
+  eduassesspro:
+    image: eduassesspro:latest
+    container_name: eduassesspro
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqlDB
+
+  mysqlDB:
+    image: mysql:8.0
+    container_name: mysqlDB
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: eduassess
+      MYSQL_USER: eduuser
+      MYSQL_PASSWORD: edu123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - mysqlDB
+    environment:
+      PMA_HOST: mysqlDB
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "9090:80"
+
+volumes:
+  mysql_data:
