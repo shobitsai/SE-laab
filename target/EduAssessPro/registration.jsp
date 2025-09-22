@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Exam Registration - Smart Assessment Hub</title>
+    <title>Exam Registration - EduAssessPro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
